@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Kingsman.Windows.Employee
 {
     /// <summary>
-    /// Логика взаимодействия для CreateOrderWindow.xaml
+    /// Логика взаимодействия для ClientOrdersWindow.xaml
     /// </summary>
-    public partial class CreateOrderWindow : Window
+    public partial class ClientOrdersWindow : Window
     {
-        public CreateOrderWindow()
+        public ClientOrdersWindow()
         {
             InitializeComponent();
         }
