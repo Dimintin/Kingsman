@@ -1,4 +1,12 @@
-<h1> 2ИСП11-20 Казаков Дмитрий, Пошив Одежды </h1>
-<h> Структура проекта </h>
+<h1> 2ИСП11-20 Казаков Дмитрий Александрович Пошив Одежды </h1>
 
-![image](https://user-images.githubusercontent.com/101355738/224072679-586cbe42-045f-44a0-bee1-5e5a0cdada63.png)
+<b> Структура проекта </b>
+
+
+![image](https://user-images.githubusercontent.com/101355738/224075040-54af700f-f8d0-4266-b35d-7100366ff161.png)
+
+<b> Структура базы данных </b>
+
+![image](https://user-images.githubusercontent.com/101355738/225091626-ab834348-5b79-4c7f-87f6-4b1341da2a7f.png)
+
+
