@@ -1,0 +1,1195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище KingsmanModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="17" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="GenderId" Type="nchar" MaxLength="1" />
+          <Property Name="PersonalDiscountId" Type="int" />
+        </EntityType>
+        <EntityType Name="ClientSizes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="StandartedSize" Type="int" />
+          <Property Name="HeadDiameter" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="ShoulderDistance" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="ChestSize" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="HandLenght" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="WaistDiameter" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="HipsDiameter" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="LegLenght" Type="decimal" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="17" />
+          <Property Name="GenderId" Type="nchar" MaxLength="1" />
+          <Property Name="PositionId" Type="int" />
+          <Property Name="PhotoLink" Type="nvarchar" MaxLength="2048" />
+        </EntityType>
+        <EntityType Name="EmployeePosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Salary" Type="int" />
+          <Property Name="PersonalDiscountId" Type="int" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="GenderName" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="MaterialName" Type="nvarchar" MaxLength="50" />
+          <Property Name="QuantityInStock" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="MaterialService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="MaterialId" Type="int" />
+          <Property Name="ServiceId" Type="int" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" />
+          <Property Name="ClientId" Type="int" />
+          <Property Name="OrderDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="OrderService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="ServiceId" Type="int" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="PersonalDiscount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="DiscountSize" Type="decimal" Precision="3" Scale="2" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ServiceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Price" Type="int" />
+          <Property Name="ServiceTypeId" Type="int" />
+        </EntityType>
+        <EntityType Name="ServicePhoto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PhotoLink" Type="nvarchar" MaxLength="2048" Nullable="false" />
+          <Property Name="ServiceId" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="SupplierName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="17" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SupplierDelivery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="SupllierId" Type="int" />
+          <Property Name="MaterialId" Type="int" />
+          <Property Name="Quantity" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="DeliveryDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Client_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_PersonalDiscount">
+          <End Role="PersonalDiscount" Type="Self.PersonalDiscount" Multiplicity="0..1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalDiscount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="PersonalDiscountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientSizes_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="ClientSizes" Type="Self.ClientSizes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClientSizes">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_EmployeePosition">
+          <End Role="EmployeePosition" Type="Self.EmployeePosition" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeePosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeePosition_PersonalDiscount">
+          <End Role="PersonalDiscount" Type="Self.PersonalDiscount" Multiplicity="0..1" />
+          <End Role="EmployeePosition" Type="Self.EmployeePosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalDiscount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeePosition">
+              <PropertyRef Name="PersonalDiscountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialService_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
+          <End Role="MaterialService" Type="Self.MaterialService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialService">
+              <PropertyRef Name="MaterialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialService_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+          <End Role="MaterialService" Type="Self.MaterialService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialService">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderService_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OrderService" Type="Self.OrderService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderService">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderService_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+          <End Role="OrderService" Type="Self.OrderService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderService">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_ServiceType">
+          <End Role="ServiceType" Type="Self.ServiceType" Multiplicity="0..1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicePhoto_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+          <End Role="ServicePhoto" Type="Self.ServicePhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicePhoto">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierDelivery_Material">
+          <End Role="Material" Type="Self.Material" Multiplicity="0..1" />
+          <End Role="SupplierDelivery" Type="Self.SupplierDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierDelivery">
+              <PropertyRef Name="MaterialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierDelivery_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="SupplierDelivery" Type="Self.SupplierDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierDelivery">
+              <PropertyRef Name="SupllierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Хранилище KingsmanModelContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientSizes" EntityType="Self.ClientSizes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeePosition" EntityType="Self.EmployeePosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Material" EntityType="Self.Material" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaterialService" EntityType="Self.MaterialService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderService" EntityType="Self.OrderService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalDiscount" EntityType="Self.PersonalDiscount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServicePhoto" EntityType="Self.ServicePhoto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceType" EntityType="Self.ServiceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierDelivery" EntityType="Self.SupplierDelivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Client_Gender" Association="Self.FK_Client_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_PersonalDiscount" Association="Self.FK_Client_PersonalDiscount">
+            <End Role="PersonalDiscount" EntitySet="PersonalDiscount" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientSizes_Client" Association="Self.FK_ClientSizes_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientSizes" EntitySet="ClientSizes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_EmployeePosition" Association="Self.FK_Employee_EmployeePosition">
+            <End Role="EmployeePosition" EntitySet="EmployeePosition" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Gender" Association="Self.FK_Employee_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeePosition_PersonalDiscount" Association="Self.FK_EmployeePosition_PersonalDiscount">
+            <End Role="PersonalDiscount" EntitySet="PersonalDiscount" />
+            <End Role="EmployeePosition" EntitySet="EmployeePosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialService_Material" Association="Self.FK_MaterialService_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="MaterialService" EntitySet="MaterialService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialService_Service" Association="Self.FK_MaterialService_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="MaterialService" EntitySet="MaterialService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Client" Association="Self.FK_Order_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Employee" Association="Self.FK_Order_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderService_Order" Association="Self.FK_OrderService_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderService" EntitySet="OrderService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderService_Service" Association="Self.FK_OrderService_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="OrderService" EntitySet="OrderService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_ServiceType" Association="Self.FK_Service_ServiceType">
+            <End Role="ServiceType" EntitySet="ServiceType" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicePhoto_Service" Association="Self.FK_ServicePhoto_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="ServicePhoto" EntitySet="ServicePhoto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierDelivery_Material" Association="Self.FK_SupplierDelivery_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="SupplierDelivery" EntitySet="SupplierDelivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierDelivery_Supplier" Association="Self.FK_SupplierDelivery_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="SupplierDelivery" EntitySet="SupplierDelivery" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KingsmanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(KingsmanModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(KingsmanModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Client" EntityType="KingsmanModel.Client" />
+          <EntitySet Name="ClientSizes" EntityType="KingsmanModel.ClientSizes" />
+          <EntitySet Name="Employee" EntityType="KingsmanModel.Employee" />
+          <EntitySet Name="EmployeePosition" EntityType="KingsmanModel.EmployeePosition" />
+          <EntitySet Name="Gender" EntityType="KingsmanModel.Gender" />
+          <EntitySet Name="Material" EntityType="KingsmanModel.Material" />
+          <EntitySet Name="MaterialService" EntityType="KingsmanModel.MaterialService" />
+          <EntitySet Name="Order" EntityType="KingsmanModel.Order" />
+          <EntitySet Name="OrderService" EntityType="KingsmanModel.OrderService" />
+          <EntitySet Name="PersonalDiscount" EntityType="KingsmanModel.PersonalDiscount" />
+          <EntitySet Name="Service" EntityType="KingsmanModel.Service" />
+          <EntitySet Name="ServicePhoto" EntityType="KingsmanModel.ServicePhoto" />
+          <EntitySet Name="ServiceType" EntityType="KingsmanModel.ServiceType" />
+          <EntitySet Name="Supplier" EntityType="KingsmanModel.Supplier" />
+          <EntitySet Name="SupplierDelivery" EntityType="KingsmanModel.SupplierDelivery" />
+          <EntitySet Name="sysdiagrams" EntityType="KingsmanModel.sysdiagrams" />
+          <AssociationSet Name="FK_Client_Gender" Association="KingsmanModel.FK_Client_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_PersonalDiscount" Association="KingsmanModel.FK_Client_PersonalDiscount">
+            <End Role="PersonalDiscount" EntitySet="PersonalDiscount" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientSizes_Client" Association="KingsmanModel.FK_ClientSizes_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientSizes" EntitySet="ClientSizes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Client" Association="KingsmanModel.FK_Order_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_EmployeePosition" Association="KingsmanModel.FK_Employee_EmployeePosition">
+            <End Role="EmployeePosition" EntitySet="EmployeePosition" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Gender" Association="KingsmanModel.FK_Employee_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Employee" Association="KingsmanModel.FK_Order_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeePosition_PersonalDiscount" Association="KingsmanModel.FK_EmployeePosition_PersonalDiscount">
+            <End Role="PersonalDiscount" EntitySet="PersonalDiscount" />
+            <End Role="EmployeePosition" EntitySet="EmployeePosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialService_Material" Association="KingsmanModel.FK_MaterialService_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="MaterialService" EntitySet="MaterialService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierDelivery_Material" Association="KingsmanModel.FK_SupplierDelivery_Material">
+            <End Role="Material" EntitySet="Material" />
+            <End Role="SupplierDelivery" EntitySet="SupplierDelivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MaterialService_Service" Association="KingsmanModel.FK_MaterialService_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="MaterialService" EntitySet="MaterialService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderService_Order" Association="KingsmanModel.FK_OrderService_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderService" EntitySet="OrderService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderService_Service" Association="KingsmanModel.FK_OrderService_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="OrderService" EntitySet="OrderService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_ServiceType" Association="KingsmanModel.FK_Service_ServiceType">
+            <End Role="ServiceType" EntitySet="ServiceType" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServicePhoto_Service" Association="KingsmanModel.FK_ServicePhoto_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="ServicePhoto" EntitySet="ServicePhoto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierDelivery_Supplier" Association="KingsmanModel.FK_SupplierDelivery_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="SupplierDelivery" EntitySet="SupplierDelivery" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GenderId" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="PersonalDiscountId" Type="Int32" />
+          <NavigationProperty Name="Gender" Relationship="KingsmanModel.FK_Client_Gender" FromRole="Client" ToRole="Gender" />
+          <NavigationProperty Name="PersonalDiscount" Relationship="KingsmanModel.FK_Client_PersonalDiscount" FromRole="Client" ToRole="PersonalDiscount" />
+          <NavigationProperty Name="ClientSizes" Relationship="KingsmanModel.FK_ClientSizes_Client" FromRole="Client" ToRole="ClientSizes" />
+          <NavigationProperty Name="Order" Relationship="KingsmanModel.FK_Order_Client" FromRole="Client" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="ClientSizes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="StandartedSize" Type="Int32" />
+          <Property Name="HeadDiameter" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="ShoulderDistance" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="ChestSize" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="HandLenght" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="WaistDiameter" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="HipsDiameter" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="LegLenght" Type="Decimal" Precision="5" Scale="2" />
+          <NavigationProperty Name="Client" Relationship="KingsmanModel.FK_ClientSizes_Client" FromRole="ClientSizes" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+          <Property Name="GenderId" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="PositionId" Type="Int32" />
+          <Property Name="PhotoLink" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EmployeePosition" Relationship="KingsmanModel.FK_Employee_EmployeePosition" FromRole="Employee" ToRole="EmployeePosition" />
+          <NavigationProperty Name="Gender" Relationship="KingsmanModel.FK_Employee_Gender" FromRole="Employee" ToRole="Gender" />
+          <NavigationProperty Name="Order" Relationship="KingsmanModel.FK_Order_Employee" FromRole="Employee" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="EmployeePosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Salary" Type="Int32" />
+          <Property Name="PersonalDiscountId" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="KingsmanModel.FK_Employee_EmployeePosition" FromRole="EmployeePosition" ToRole="Employee" />
+          <NavigationProperty Name="PersonalDiscount" Relationship="KingsmanModel.FK_EmployeePosition_PersonalDiscount" FromRole="EmployeePosition" ToRole="PersonalDiscount" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="GenderName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="KingsmanModel.FK_Client_Gender" FromRole="Gender" ToRole="Client" />
+          <NavigationProperty Name="Employee" Relationship="KingsmanModel.FK_Employee_Gender" FromRole="Gender" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="MaterialName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QuantityInStock" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="MaterialService" Relationship="KingsmanModel.FK_MaterialService_Material" FromRole="Material" ToRole="MaterialService" />
+          <NavigationProperty Name="SupplierDelivery" Relationship="KingsmanModel.FK_SupplierDelivery_Material" FromRole="Material" ToRole="SupplierDelivery" />
+        </EntityType>
+        <EntityType Name="MaterialService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="MaterialId" Type="Int32" />
+          <Property Name="ServiceId" Type="Int32" />
+          <NavigationProperty Name="Material" Relationship="KingsmanModel.FK_MaterialService_Material" FromRole="MaterialService" ToRole="Material" />
+          <NavigationProperty Name="Service" Relationship="KingsmanModel.FK_MaterialService_Service" FromRole="MaterialService" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeId" Type="Int32" />
+          <Property Name="ClientId" Type="Int32" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Client" Relationship="KingsmanModel.FK_Order_Client" FromRole="Order" ToRole="Client" />
+          <NavigationProperty Name="Employee" Relationship="KingsmanModel.FK_Order_Employee" FromRole="Order" ToRole="Employee" />
+          <NavigationProperty Name="OrderService" Relationship="KingsmanModel.FK_OrderService_Order" FromRole="Order" ToRole="OrderService" />
+        </EntityType>
+        <EntityType Name="OrderService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="ServiceId" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="KingsmanModel.FK_OrderService_Order" FromRole="OrderService" ToRole="Order" />
+          <NavigationProperty Name="Service" Relationship="KingsmanModel.FK_OrderService_Service" FromRole="OrderService" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="PersonalDiscount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DiscountSize" Type="Decimal" Precision="3" Scale="2" />
+          <NavigationProperty Name="Client" Relationship="KingsmanModel.FK_Client_PersonalDiscount" FromRole="PersonalDiscount" ToRole="Client" />
+          <NavigationProperty Name="EmployeePosition" Relationship="KingsmanModel.FK_EmployeePosition_PersonalDiscount" FromRole="PersonalDiscount" ToRole="EmployeePosition" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="ServiceTypeId" Type="Int32" />
+          <NavigationProperty Name="MaterialService" Relationship="KingsmanModel.FK_MaterialService_Service" FromRole="Service" ToRole="MaterialService" />
+          <NavigationProperty Name="OrderService" Relationship="KingsmanModel.FK_OrderService_Service" FromRole="Service" ToRole="OrderService" />
+          <NavigationProperty Name="ServiceType" Relationship="KingsmanModel.FK_Service_ServiceType" FromRole="Service" ToRole="ServiceType" />
+          <NavigationProperty Name="ServicePhoto" Relationship="KingsmanModel.FK_ServicePhoto_Service" FromRole="Service" ToRole="ServicePhoto" />
+        </EntityType>
+        <EntityType Name="ServicePhoto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PhotoLink" Type="String" Nullable="false" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceId" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Service" Relationship="KingsmanModel.FK_ServicePhoto_Service" FromRole="ServicePhoto" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="ServiceType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Service" Relationship="KingsmanModel.FK_Service_ServiceType" FromRole="ServiceType" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SupplierDelivery" Relationship="KingsmanModel.FK_SupplierDelivery_Supplier" FromRole="Supplier" ToRole="SupplierDelivery" />
+        </EntityType>
+        <EntityType Name="SupplierDelivery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="SupllierId" Type="Int32" />
+          <Property Name="MaterialId" Type="Int32" />
+          <Property Name="Quantity" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Material" Relationship="KingsmanModel.FK_SupplierDelivery_Material" FromRole="SupplierDelivery" ToRole="Material" />
+          <NavigationProperty Name="Supplier" Relationship="KingsmanModel.FK_SupplierDelivery_Supplier" FromRole="SupplierDelivery" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Client_Gender">
+          <End Type="KingsmanModel.Gender" Role="Gender" Multiplicity="0..1" />
+          <End Type="KingsmanModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_PersonalDiscount">
+          <End Type="KingsmanModel.PersonalDiscount" Role="PersonalDiscount" Multiplicity="0..1" />
+          <End Type="KingsmanModel.Client" Role="Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalDiscount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="PersonalDiscountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientSizes_Client">
+          <End Type="KingsmanModel.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="KingsmanModel.ClientSizes" Role="ClientSizes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ClientSizes">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Client">
+          <End Type="KingsmanModel.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="KingsmanModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_EmployeePosition">
+          <End Type="KingsmanModel.EmployeePosition" Role="EmployeePosition" Multiplicity="0..1" />
+          <End Type="KingsmanModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeePosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Gender">
+          <End Type="KingsmanModel.Gender" Role="Gender" Multiplicity="0..1" />
+          <End Type="KingsmanModel.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Employee">
+          <End Type="KingsmanModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="KingsmanModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeePosition_PersonalDiscount">
+          <End Type="KingsmanModel.PersonalDiscount" Role="PersonalDiscount" Multiplicity="0..1" />
+          <End Type="KingsmanModel.EmployeePosition" Role="EmployeePosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonalDiscount">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeePosition">
+              <PropertyRef Name="PersonalDiscountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialService_Material">
+          <End Type="KingsmanModel.Material" Role="Material" Multiplicity="0..1" />
+          <End Type="KingsmanModel.MaterialService" Role="MaterialService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialService">
+              <PropertyRef Name="MaterialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierDelivery_Material">
+          <End Type="KingsmanModel.Material" Role="Material" Multiplicity="0..1" />
+          <End Type="KingsmanModel.SupplierDelivery" Role="SupplierDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Material">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierDelivery">
+              <PropertyRef Name="MaterialId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MaterialService_Service">
+          <End Type="KingsmanModel.Service" Role="Service" Multiplicity="0..1" />
+          <End Type="KingsmanModel.MaterialService" Role="MaterialService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialService">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderService_Order">
+          <End Type="KingsmanModel.Order" Role="Order" Multiplicity="0..1" />
+          <End Type="KingsmanModel.OrderService" Role="OrderService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderService">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderService_Service">
+          <End Type="KingsmanModel.Service" Role="Service" Multiplicity="0..1" />
+          <End Type="KingsmanModel.OrderService" Role="OrderService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderService">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_ServiceType">
+          <End Type="KingsmanModel.ServiceType" Role="ServiceType" Multiplicity="0..1" />
+          <End Type="KingsmanModel.Service" Role="Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServicePhoto_Service">
+          <End Type="KingsmanModel.Service" Role="Service" Multiplicity="0..1" />
+          <End Type="KingsmanModel.ServicePhoto" Role="ServicePhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ServicePhoto">
+              <PropertyRef Name="ServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierDelivery_Supplier">
+          <End Type="KingsmanModel.Supplier" Role="Supplier" Multiplicity="0..1" />
+          <End Type="KingsmanModel.SupplierDelivery" Role="SupplierDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SupplierDelivery">
+              <PropertyRef Name="SupllierId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище KingsmanModelContainer" CdmEntityContainer="Entities">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище KingsmanModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище KingsmanModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище KingsmanModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище KingsmanModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KingsmanModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище KingsmanModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KingsmanModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище KingsmanModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище KingsmanModel.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="KingsmanModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="PersonalDiscountId" ColumnName="PersonalDiscountId" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientSizes">
+            <EntityTypeMapping TypeName="KingsmanModel.ClientSizes">
+              <MappingFragment StoreEntitySet="ClientSizes">
+                <ScalarProperty Name="LegLenght" ColumnName="LegLenght" />
+                <ScalarProperty Name="HipsDiameter" ColumnName="HipsDiameter" />
+                <ScalarProperty Name="WaistDiameter" ColumnName="WaistDiameter" />
+                <ScalarProperty Name="HandLenght" ColumnName="HandLenght" />
+                <ScalarProperty Name="ChestSize" ColumnName="ChestSize" />
+                <ScalarProperty Name="ShoulderDistance" ColumnName="ShoulderDistance" />
+                <ScalarProperty Name="HeadDiameter" ColumnName="HeadDiameter" />
+                <ScalarProperty Name="StandartedSize" ColumnName="StandartedSize" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="KingsmanModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="PhotoLink" ColumnName="PhotoLink" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeePosition">
+            <EntityTypeMapping TypeName="KingsmanModel.EmployeePosition">
+              <MappingFragment StoreEntitySet="EmployeePosition">
+                <ScalarProperty Name="PersonalDiscountId" ColumnName="PersonalDiscountId" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="KingsmanModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="GenderName" ColumnName="GenderName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Material">
+            <EntityTypeMapping TypeName="KingsmanModel.Material">
+              <MappingFragment StoreEntitySet="Material">
+                <ScalarProperty Name="QuantityInStock" ColumnName="QuantityInStock" />
+                <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaterialService">
+            <EntityTypeMapping TypeName="KingsmanModel.MaterialService">
+              <MappingFragment StoreEntitySet="MaterialService">
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="KingsmanModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderService">
+            <EntityTypeMapping TypeName="KingsmanModel.OrderService">
+              <MappingFragment StoreEntitySet="OrderService">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalDiscount">
+            <EntityTypeMapping TypeName="KingsmanModel.PersonalDiscount">
+              <MappingFragment StoreEntitySet="PersonalDiscount">
+                <ScalarProperty Name="DiscountSize" ColumnName="DiscountSize" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service">
+            <EntityTypeMapping TypeName="KingsmanModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="ServiceTypeId" ColumnName="ServiceTypeId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServicePhoto">
+            <EntityTypeMapping TypeName="KingsmanModel.ServicePhoto">
+              <MappingFragment StoreEntitySet="ServicePhoto">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+                <ScalarProperty Name="PhotoLink" ColumnName="PhotoLink" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceType">
+            <EntityTypeMapping TypeName="KingsmanModel.ServiceType">
+              <MappingFragment StoreEntitySet="ServiceType">
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier">
+            <EntityTypeMapping TypeName="KingsmanModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierDelivery">
+            <EntityTypeMapping TypeName="KingsmanModel.SupplierDelivery">
+              <MappingFragment StoreEntitySet="SupplierDelivery">
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+                <ScalarProperty Name="SupllierId" ColumnName="SupllierId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="KingsmanModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -23,5 +23,10 @@ namespace Kingsman.Windows.Employee
         {
             InitializeComponent();
         }
+
+        private void BtnSighIn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Здесь пока ничего нет, но оно работает", "TempWindow", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }
