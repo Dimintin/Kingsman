@@ -28,6 +28,8 @@ namespace Kingsman.DB
         public string GenderId { get; set; }
         public Nullable<int> PositionId { get; set; }
         public string PhotoLink { get; set; }
+        public string Password { get; set; }
+        public string Login { get; set; }
     
         public virtual EmployeePosition EmployeePosition { get; set; }
         public virtual Gender Gender { get; set; }

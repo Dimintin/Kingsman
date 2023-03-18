@@ -29,6 +29,8 @@ namespace Kingsman.DB
         public string Email { get; set; }
         public string GenderId { get; set; }
         public Nullable<int> PersonalDiscountId { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
     
         public virtual Gender Gender { get; set; }
         public virtual PersonalDiscount PersonalDiscount { get; set; }

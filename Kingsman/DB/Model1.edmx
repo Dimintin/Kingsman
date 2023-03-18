@@ -17,6 +17,8 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="GenderId" Type="nchar" MaxLength="1" />
           <Property Name="PersonalDiscountId" Type="int" />
+          <Property Name="Login" Type="nvarchar" MaxLength="30" />
+          <Property Name="Password" Type="nvarchar" MaxLength="35" />
         </EntityType>
         <EntityType Name="ClientSizes">
           <Key>
@@ -45,6 +47,8 @@
           <Property Name="GenderId" Type="nchar" MaxLength="1" />
           <Property Name="PositionId" Type="int" />
           <Property Name="PhotoLink" Type="nvarchar" MaxLength="2048" />
+          <Property Name="Password" Type="nvarchar" MaxLength="35" />
+          <Property Name="Login" Type="nvarchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="EmployeePosition">
           <Key>
@@ -579,7 +583,7 @@
             <End Role="Supplier" EntitySet="Supplier" />
             <End Role="SupplierDelivery" EntitySet="SupplierDelivery" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -603,6 +607,8 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="GenderId" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
           <Property Name="PersonalDiscountId" Type="Int32" />
+          <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Gender" Relationship="KingsmanModel.FK_Client_Gender" FromRole="Client" ToRole="Gender" />
           <NavigationProperty Name="PersonalDiscount" Relationship="KingsmanModel.FK_Client_PersonalDiscount" FromRole="Client" ToRole="PersonalDiscount" />
           <NavigationProperty Name="ClientSizes" Relationship="KingsmanModel.FK_ClientSizes_Client" FromRole="Client" ToRole="ClientSizes" />
@@ -636,6 +642,8 @@
           <Property Name="GenderId" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
           <Property Name="PositionId" Type="Int32" />
           <Property Name="PhotoLink" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="EmployeePosition" Relationship="KingsmanModel.FK_Employee_EmployeePosition" FromRole="Employee" ToRole="EmployeePosition" />
           <NavigationProperty Name="Gender" Relationship="KingsmanModel.FK_Employee_Gender" FromRole="Employee" ToRole="Gender" />
           <NavigationProperty Name="Order" Relationship="KingsmanModel.FK_Order_Employee" FromRole="Employee" ToRole="Order" />
@@ -969,7 +977,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1002,6 +1010,8 @@
           <EntitySetMapping Name="Client">
             <EntityTypeMapping TypeName="KingsmanModel.Client">
               <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="PersonalDiscountId" ColumnName="PersonalDiscountId" />
                 <ScalarProperty Name="GenderId" ColumnName="GenderId" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -1032,6 +1042,8 @@
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="KingsmanModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="PhotoLink" ColumnName="PhotoLink" />
                 <ScalarProperty Name="PositionId" ColumnName="PositionId" />
                 <ScalarProperty Name="GenderId" ColumnName="GenderId" />
@@ -1169,7 +1181,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

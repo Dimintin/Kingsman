@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kingsman.ClassHelper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,17 @@ namespace Kingsman.Windows.Employee
 
         private void BtnSighIn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Здесь пока ничего нет, но оно работает", "TempWindow", MessageBoxButton.OK, MessageBoxImage.Information);
+            var userAuth = ClassHelper.EF.Context.Employee.ToList().
+                Where(i => i.Login == TbLogin.Text && i.Password == PbPassword.Password).FirstOrDefault();
+            if (userAuth != null) {
+                MainWindow mainWindow = new MainWindow();
+                this.Close();
+                mainWindow.Show();
+            }
+            else {
+                MessageBox.Show("Неверный логин или пароль!", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            }
+            
         }
     }
 }
