@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kingsman"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="400" Width="300">
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Center"
+                    Margin="0 40 0 0">
+            <Button x:Name="BtnServices"
+                    Height="20"
+                    Content="Service"
+                    Width="70"
+                    Click="BtnServices_Click"/>
+            <Button x:Name="BtnClients"
+                    Height="20"
+                    Content="Client"
+                    Width="70"
+                    Click="BtnClients_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

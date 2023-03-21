@@ -8,6 +8,6 @@ namespace Kingsman.ClassHelper
 {
     internal class EF
     {
-        public static DB.Entities Context { get; set; } = new DB.Entities();
+        public static DB.Entities1 Context { get; set; } = new DB.Entities1();
     }
 }
