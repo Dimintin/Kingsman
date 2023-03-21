@@ -13,3 +13,6 @@
 
 ![image](https://user-images.githubusercontent.com/101355738/225705302-aaddb4c9-f200-428f-a6e1-319e29d681c4.png)
 
+<b> Окно для вывода данных о списке услуг </b>
+
+![image](https://user-images.githubusercontent.com/101355738/226655480-a6b22030-d9f8-4d62-8ba9-78ef35d356ee.png)
