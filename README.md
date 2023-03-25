@@ -10,7 +10,7 @@
 
 <b> Дизайн окна авторизации </b>
 
-![image](https://user-images.githubusercontent.com/101355738/227718101-5d1d92a3-dcf0-4c38-9913-3c94cf9c1259.png)
+![image](https://user-images.githubusercontent.com/101355738/227719113-a5cb836b-2ab7-4130-b21b-46f425ce7a7e.png)
 
 <b> Окно для вывода данных о списке услуг </b>
 
