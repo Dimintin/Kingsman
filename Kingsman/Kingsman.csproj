@@ -161,6 +161,9 @@
     <Compile Include="Windows\Client\OrderWindow.xaml.cs">
       <DependentUpon>OrderWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Client\RegistrationWindow.xaml.cs">
+      <DependentUpon>RegistrationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Employee\ClientOrdersWindow.xaml.cs">
       <DependentUpon>ClientOrdersWindow.xaml</DependentUpon>
     </Compile>
@@ -231,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Client\OrderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Client\RegistrationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -333,6 +340,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Res\kostum_brioni_1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

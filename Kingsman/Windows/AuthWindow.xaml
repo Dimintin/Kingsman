@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Kingsman.Windows.Employee"
         mc:Ignorable="d"
         Title="AuthWindow" 
-        Height="500" 
+        Height="450" 
         Width="400" 
         WindowStartupLocation="CenterScreen">
     <Grid>
@@ -19,7 +19,7 @@
                 <Border.Background>
                     <LinearGradientBrush EndPoint="0.5,1" 
                                          StartPoint="0.5,0" 
-                                         Opacity="0.51">
+                                         Opacity="0.7">
                         <GradientStop Color="Black" 
                                       Offset="1"/>
                         <GradientStop Color="White"/>
@@ -38,44 +38,33 @@
                                FontWeight="Bold"
                                Foreground="Black"
                                Margin="0 40 0 0"/>
-                    <TextBlock Text="Логин"
-                           Margin="80 60 0 0"
-                           HorizontalAlignment="Left"
-                           FontSize="20"
-                           Foreground="Black"
-                                FontWeight="Heavy"/>
                     <TextBox x:Name="TbLogin"
+                             Tag="Введите логин"
                          Height="30"
                          Width="300"
-                         Margin="0 10 0 0"
+                         Margin="0 60 0 0"
                          Opacity="0.8"
                          FontSize="20"
                          VerticalContentAlignment="Top"
                          Foreground="Black"
                          HorizontalAlignment="Center"
                          MaxLength="25"
-                         MaxLines="1">
+                         MaxLines="1"
+                             LostFocus="TextBox_LostFocus"
+                             GotFocus="TextBox_GotFocus">
                     </TextBox>
-                    <TextBlock Text="Пароль"
-                           Margin="80 10 0 0"
-                           HorizontalAlignment="Left"
-                           FontSize="20"
-                           Foreground="Black"
-                               FontWeight="Heavy"/>
-                    <PasswordBox x:Name="PbPassword"
+                    <TextBox x:Name="PbPassword"
+                                 Tag="Введите пароль"
                              Height="30"
                              Width="300"
-                             Margin="0 10 0 0"
+                             Margin="0 30 0 0"
                              Opacity="0.8"
                              FontSize="20"
                              VerticalContentAlignment="Top"
-                             MaxLength="20">
-                        <PasswordBox.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="9"/>
-                            </Style>
-                        </PasswordBox.Resources>
-                    </PasswordBox>
+                             MaxLength="20"
+                                 LostFocus="TextBox_LostFocus"
+                                 GotFocus="TextBox_GotFocus">
+                    </TextBox>
                     <TextBlock x:Name="TblSignError"
                                Text=""
                                Margin="0 10 0 0"
@@ -87,11 +76,11 @@
                     <Button x:Name="BtnSighIn"
                         Height="41"
                         Width="140"
-                        Margin="0 40 0 0"
+                        Margin="0 10 0 0"
                         Content="Вход"
                         FontSize="20"
                             Opacity="0.7"
-                             FontWeight="Heavy"
+                             FontWeight="Bold"
                         Background="White"
                         Foreground="Black"
                         VerticalContentAlignment="Center" 
@@ -103,6 +92,14 @@
                             </Style>
                         </Button.Resources>
                     </Button>
+                    <TextBlock x:Name="TbRegister"
+                               MouseLeftButtonUp="TbRegister_MouseLeftButtonUp"
+                               Text="Регистрация"
+                               HorizontalAlignment="Center"
+                               Margin="0 10"
+                               FontSize="18"
+                               Foreground="LightGray"
+                               FontStyle="Italic"/>
                 </StackPanel>
             </Border>
         </Border>

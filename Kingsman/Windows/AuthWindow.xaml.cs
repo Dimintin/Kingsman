@@ -1,4 +1,5 @@
 ﻿using Kingsman.ClassHelper;
+using Kingsman.Windows.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace Kingsman.Windows.Employee
         private void BtnSighIn_Click(object sender, RoutedEventArgs e)
         {
             var userAuth = ClassHelper.EF.Context.Employee.ToList().
-                Where(i => i.Login == TbLogin.Text && i.Password == PbPassword.Password).FirstOrDefault();
+                Where(i => i.Login == TbLogin.Text && i.Password == PbPassword.Text).FirstOrDefault();
             if (userAuth != null) {
                 MainWindow mainWindow = new MainWindow();
                 this.Close();
@@ -38,6 +39,32 @@ namespace Kingsman.Windows.Employee
                 MessageBox.Show("Неверный логин или пароль!", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Asterisk);
             }
             
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length == 0)
+            {
+                (sender as TextBox).Foreground = Brushes.DarkGray;
+                (sender as TextBox).Text = (string)(sender as TextBox).Tag;
+            }
+        }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if ((sender as TextBox).Text.Length != 0 && (sender as TextBox).Text == (string)(sender as TextBox).Tag)
+            {
+                (sender as TextBox).Foreground = Brushes.Black;
+                (sender as TextBox).Text = "";
+            }
+        }
+
+        private void TbRegister_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            RegistrationWindow registrationWindow = new RegistrationWindow();
+            registrationWindow.Show();
+            registrationWindow.ShowDialog();
+            this.Close();
         }
     }
 }
