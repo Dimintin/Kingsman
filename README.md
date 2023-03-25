@@ -2,7 +2,6 @@
 
 <b> Структура проекта </b>
 
-
 ![image](https://user-images.githubusercontent.com/101355738/224075040-54af700f-f8d0-4266-b35d-7100366ff161.png)
 
 <b> Структура базы данных </b>
@@ -11,8 +10,13 @@
 
 <b> Дизайн окна авторизации </b>
 
-![image](https://user-images.githubusercontent.com/101355738/225705302-aaddb4c9-f200-428f-a6e1-319e29d681c4.png)
+![image](https://user-images.githubusercontent.com/101355738/227719113-a5cb836b-2ab7-4130-b21b-46f425ce7a7e.png)
 
 <b> Окно для вывода данных о списке услуг </b>
 
-![image](https://user-images.githubusercontent.com/101355738/226655480-a6b22030-d9f8-4d62-8ba9-78ef35d356ee.png)
+![image](https://user-images.githubusercontent.com/101355738/227717801-2cfbdd88-1069-48da-a19f-d8dd0981f2e9.png)
+
+<b> Дизайн окна регистрации </b>
+
+![image](https://user-images.githubusercontent.com/101355738/227717970-8ec47982-9de6-4558-974b-aef8a43ba043.png)
+
