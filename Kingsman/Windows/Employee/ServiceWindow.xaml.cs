@@ -28,5 +28,12 @@ namespace Kingsman.Windows.Employee
         public void SetListService() {
             LvService.ItemsSource = ClassHelper.EF.Context.Service.ToList();
         }
+
+        private void BtnAddService_Click(object sender, RoutedEventArgs e)
+        {
+            AddServiceWindow addServiceWindow = new AddServiceWindow();
+            addServiceWindow.ShowDialog();
+            SetListService();
+        }
     }
 }
