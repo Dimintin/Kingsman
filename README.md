@@ -20,3 +20,6 @@
 
 ![image](https://user-images.githubusercontent.com/101355738/227717970-8ec47982-9de6-4558-974b-aef8a43ba043.png)
 
+<b>Дизайн окна добавления услуг</b>
+
+![image](https://user-images.githubusercontent.com/101355738/229856093-3f941d75-08b8-4d26-be5a-1e2ae9c43a8f.png)
